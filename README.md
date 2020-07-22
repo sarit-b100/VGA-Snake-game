@@ -1,1 +1,6 @@
 # VGA-Snake-game
+This is a snake-apple game implemented on an FPGA able to be played on a VGA monitor.The Verilog code rewires the FPGA to create a VGA controller circuit.The game is implemented using 20 sets of 4 registers, each 4 containing the left,right,top and bottom boundaries of each block making up the snake.The snake can, therefore, be atmost 20 blocks long.
+The snake "head" block moves in the last desired direction(as given input by the user) on each clock edge until it strikes a wall and the game ends.The other "body" blocks of the snake "follows" the head.This is done using shift registers which on each clock edge copies the boundary data of the "head" block to the "body" blocks in order from "head" to "tail" of the snake.
+The Apple is implemented as a green coloured block which is placed randomly at a pair of (H,V) coordinates.For this purpose we use a horizontal and a vertical counter running through the addressable pixel range in the horizontal and vertical direction range respectively.It uses the 100 MHz clock and is sampled the moment the previous apple is "eaten"
+by the snake.
+Each time the snake eats the apple, a new apple is placed by the Apple module and the game continues.
